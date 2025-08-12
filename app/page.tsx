@@ -27,7 +27,7 @@ export default function Portfolio() {
       <header className="bg-white shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold">Monisha Kesavan — Senior Software Engineer</h1>
+            <h1 className="text-xl font-semibold">Monisha Kesavan — Software Engineer</h1>
             <p className="text-sm text-gray-500">.NET • C# • React • Next.js • AWS • System Design</p>
           </div>
           <nav className="space-x-4">
@@ -41,7 +41,7 @@ export default function Portfolio() {
 
       <section className="max-w-5xl mx-auto px-6 py-14 flex flex-col md:flex-row items-center gap-8">
         <div className="flex-1">
-          <h2 className="text-4xl font-bold leading-tight">Senior Software Engineer — .NET & React</h2>
+          <h2 className="text-4xl font-bold leading-tight">Software Engineer — .NET & React</h2>
           <p className="mt-4 text-gray-600">I build reliable, scalable backend systems in .NET and ship elegant, performant frontend experiences in React and Next.js. Experienced with cloud-native patterns on AWS, CI/CD, and production-grade system design for enterprise web apps.</p>
 
           <div className="mt-6 flex items-center gap-3">
@@ -59,10 +59,12 @@ export default function Portfolio() {
           </ul>
         </div>
 
-        <div className="w-48 h-48 md:w-72 md:h-72 bg-gradient-to-tr from-sky-400 to-indigo-600 rounded-2xl flex items-end justify-center p-4 text-white shadow-lg">
+        <div className="w-48 h-48 md:w-72 md:h-72 bg-gradient-to-tr from-sky-400 to-indigo-600 rounded-2xl flex items-end justify-center p-4 text-white shadow-lg bg-cover bg-center"
+        style={{ backgroundImage: "url('monisha.jpg')" }}
+        >
           <div className="text-center">
             <p className="font-semibold">Monisha Kesavan</p>
-            <p className="text-xs opacity-90">Senior Software Engineer</p>
+            <p className="text-xs opacity-90">Software Engineer</p>
           </div>
         </div>
       </section>
@@ -84,7 +86,7 @@ export default function Portfolio() {
             <div>
               <h4 className="text-sm font-semibold">Open to</h4>
               <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
-                <li>Senior/.NET engineering roles (full-stack or backend)</li>
+                <li>.NET engineering roles (full-stack or backend)</li>
                 <li>Technical leadership & system design interviews</li>
                 <li>Remote or Melbourne-based opportunities</li>
               </ul>
