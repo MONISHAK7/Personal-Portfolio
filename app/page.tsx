@@ -86,7 +86,7 @@ export default function Portfolio() {
             <div>
               <h4 className="text-sm font-semibold">Open to</h4>
               <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
-                <li>.NET engineering roles (full-stack or backend)</li>
+                <li>Senior/.NET engineering roles (full-stack or backend)</li>
                 <li>Technical leadership & system design interviews</li>
                 <li>Remote or Melbourne-based opportunities</li>
               </ul>
