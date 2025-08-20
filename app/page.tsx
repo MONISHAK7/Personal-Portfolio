@@ -18,7 +18,7 @@ export default function Portfolio() {
       tech: ['.NET 8', 'EF Core', 'React', 'Next.js', 'AWS (RDS, S3)'],
       github: 'https://github.com/MONISHAK7/Skymod.API',
       demo: '#',
-      img: '/projects/skymod-screenshot.png'
+      img: 'skymod.png'
     },
     {
       title: 'Personal Portfolio',
