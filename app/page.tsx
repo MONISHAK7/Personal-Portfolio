@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import emailjs from 'emailjs-com';
 
 // Portfolio.jsx
 // Usage:
@@ -19,132 +20,204 @@ export default function Portfolio() {
       demo: '#',
       img: '/projects/skymod-screenshot.png'
     },
-    // add more projects as needed
+    {
+      title: 'Personal Portfolio',
+      desc: 'A modern, responsive personal portfolio website built with Next.js and Tailwind CSS to showcase projects, skills, and experience. Features smooth animations, optimized images, and mobile-first design. Deployed on Vercel for fast global delivery.',
+      tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+      github: 'https://github.com/MONISHAK7/Personal-Portfolio',
+      demo: 'https://personal-portfolio-moeqqr4y6-monisha-kesavans-projects.vercel.app/',
+      img: 'personal.png'
+    }
   ];
 
-  return (
-    <main className="min-h-screen bg-gray-50 text-gray-800 antialiased">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-semibold">Monisha Kesavan — Software Engineer</h1>
-            <p className="text-sm text-gray-500">.NET • C# • React • Next.js • AWS • System Design</p>
-          </div>
-          <nav className="space-x-4">
-            <a href="#about" className="text-sm hover:underline">About</a>
-            <a href="#projects" className="text-sm hover:underline">Projects</a>
-            <a href="#resume" className="text-sm hover:underline">Resume</a>
-            <a href="#contact" className="text-sm hover:underline">Contact</a>
-          </nav>
+  const [formStatus, setFormStatus] = useState('');
+
+  useEffect(() => {
+    if (formStatus) {
+      const timer = setTimeout(() => setFormStatus(''), 3000);
+      return () => clearTimeout(timer);
+    }
+
+  }, [formStatus]);
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    try {
+      await emailjs.sendForm(
+        'service_jciav4m',
+        'template_4dab7ih',
+        e.currentTarget,
+        '3Ng2DCsgqcx1n2xjb'
+      );
+
+      setFormStatus('✅ Message sent successfully!');
+
+      setTimeout(() => {
+        setFormStatus('');
+        form.reset(); 
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+      setFormStatus('❌ Something went wrong. Please try again.');
+    }
+  }
+
+return (
+  <main className="min-h-screen bg-gray-50 text-gray-800 antialiased">
+    <header className="bg-white shadow-sm">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-semibold">Monisha Kesavan — Software Engineer</h1>
+          <p className="text-sm text-gray-500">.NET • C# • React • Next.js • AWS</p>
         </div>
-      </header>
+        <nav className="space-x-4">
+          <a href="#about" className="text-sm hover:underline">About</a>
+          <a href="#projects" className="text-sm hover:underline">Projects</a>
+          <a href="#resume" className="text-sm hover:underline">Resume</a>
+          <a href="#contact" className="text-sm hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-      <section className="max-w-5xl mx-auto px-6 py-14 flex flex-col md:flex-row items-center gap-8">
-        <div className="flex-1">
-          <h2 className="text-4xl font-bold leading-tight">Software Engineer — .NET & React</h2>
-          <p className="mt-4 text-gray-600">I build reliable, scalable backend systems in .NET and ship elegant, performant frontend experiences in React and Next.js. Experienced with cloud-native patterns on AWS, CI/CD, and production-grade system design for enterprise web apps.</p>
+    <section className="max-w-5xl mx-auto px-6 py-14 flex flex-col md:flex-row items-center gap-8">
+      <div className="flex-1">
+        <h2 className="text-4xl font-bold leading-tight">Software Engineer — .NET & React</h2>
+        <p className="mt-4 text-gray-600">I build reliable, scalable backend systems in .NET and ship elegant, performant frontend experiences in React and Next.js. Experienced with cloud-native patterns on AWS, CI/CD, Azure and production-grade system design for enterprise web apps.</p>
 
-          <div className="mt-6 flex items-center gap-3">
-            <a href="/resume.pdf" download className="inline-block bg-sky-600 text-white px-5 py-3 rounded-lg shadow hover:shadow-lg">Download Resume</a>
-            <a href="#projects" className="inline-block border border-sky-600 text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50">View Projects</a>
+        <div className="mt-6 flex items-center gap-3">
+          <a href="/resume.pdf" download className="inline-block bg-sky-600 text-white px-5 py-3 rounded-lg shadow hover:shadow-lg">Download Resume</a>
+          <a href="#projects" className="inline-block border border-sky-600 text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50">View Projects</a>
+        </div>
+
+        <ul className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm text-gray-700">
+          <li className="px-3 py-2 bg-white rounded">.NET / C#</li>
+          <li className="px-3 py-2 bg-white rounded">Entity Framework Core</li>
+          <li className="px-3 py-2 bg-white rounded">Web API</li>
+          <li className="px-3 py-2 bg-white rounded">React / Next.js</li>
+          <li className="px-3 py-2 bg-white rounded">AWS (S3, RDS, CloudFront)</li>
+          <li className="px-3 py-2 bg-white rounded">Azure Devops</li>
+          <li className="px-3 py-2 bg-white rounded">System Design</li>
+          <li className="px-3 py-2 bg-white rounded">CI/CD / GitHub Actions</li>
+          <li className="px-3 py-2 bg-white rounded">SQL and NoSQL Databases</li>
+        </ul>
+      </div>
+
+      <div className="w-48 h-48 md:w-72 md:h-72 bg-gradient-to-tr from-sky-400 to-indigo-600 rounded-2xl flex items-end justify-center p-4 text-white shadow-lg bg-cover bg-center"
+        style={{ backgroundImage: "url('monisha.jpg')" }}
+      >
+        <div className="text-center">
+          <p className="font-semibold">Monisha Kesavan</p>
+          <p className="text-xs opacity-90">Software Engineer</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" className="max-w-5xl mx-auto px-6 py-10">
+      <div className="bg-white rounded-lg p-6 shadow">
+        <h3 className="text-2xl font-semibold">About Me</h3>
+        <p className="mt-3 text-gray-600">I have 7+ years building backend services and web applications with .NET and modern frontends with React. I enjoy designing robust data models with EF Core, optimizing backend performance, and partnering with product/design to deliver polished UI. I have experience operating apps in AWS, using RDS for relational data, S3 for assets, automating deployments via GitHub Actions / Amplify and Azure Devops.</p>
+
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <h4 className="text-sm font-semibold">Strengths</h4>
+            <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
+              <li>System design & architecture for scalable web apps</li>
+              <li>High-quality, testable C# code & clean APIs</li>
+              <li>UX-minded frontend development in React/Next.js</li>
+            </ul>
           </div>
+          <div>
+            <h4 className="text-sm font-semibold">Open to</h4>
+            <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
+              <li>Senior/.NET engineering roles (full-stack or backend)</li>
+              <li>Remote or Hybrid Melbourne-based opportunities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <ul className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm text-gray-700">
-            <li className="px-3 py-2 bg-white rounded">.NET / C#</li>
-            <li className="px-3 py-2 bg-white rounded">Entity Framework Core</li>
-            <li className="px-3 py-2 bg-white rounded">React / Next.js</li>
-            <li className="px-3 py-2 bg-white rounded">AWS (S3, RDS, CloudFront)</li>
-            <li className="px-3 py-2 bg-white rounded">System Design</li>
-            <li className="px-3 py-2 bg-white rounded">CI/CD / GitHub Actions</li>
+    <section id="projects" className="max-w-5xl mx-auto px-6 py-10">
+      <h3 className="text-2xl font-semibold mb-6">Projects</h3>
+      <div className="grid gap-6">
+        {projects.map((p) => (
+          <article key={p.title} className="bg-white rounded-lg p-5 shadow flex flex-col md:flex-row gap-4 items-start">
+            <img src={p.img} alt={p.title} className="w-full md:w-56 h-40 object-cover rounded-lg bg-gray-100" />
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold">{p.title}</h4>
+              <p className="mt-2 text-gray-600">{p.desc}</p>
+              <p className="mt-3 text-sm text-gray-700">Tech: {p.tech.join(' • ')}</p>
+
+              <div className="mt-4 flex items-center gap-3">
+                <a href={p.github} target="_blank" rel="noreferrer" className="text-sm inline-block border px-3 py-2 rounded hover:bg-gray-50">View Code</a>
+                {p.demo && <a href={p.demo} target="_blank" rel="noreferrer" className="text-sm inline-block bg-sky-50 text-sky-600 px-3 py-2 rounded">Live Demo</a>}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="resume" className="max-w-5xl mx-auto px-6 py-10">
+      <div className="bg-white rounded-lg p-6 shadow flex items-center justify-between">
+        <div>
+          <h3 className="text-xl font-semibold">Resume</h3>
+          <p className="text-gray-600 mt-1">Download a printer-friendly PDF of my resume.</p>
+        </div>
+        <a href="/resume.pdf" download className="bg-sky-600 text-white px-5 py-3 rounded-lg shadow hover:shadow-lg">Download Resume</a>
+      </div>
+    </section>
+
+    <section id="experience" className="max-w-5xl mx-auto px-6 py-10">
+      <h3 className="text-2xl font-semibold mb-6">Work Experience</h3>
+      <div className="space-y-6">
+        <div className="p-6 bg-white shadow rounded-lg">
+          <h3 className="text-xl font-semibold">Software Engineer – Slalom</h3>
+          <p className="text-gray-600">Sep 2022 – March 2025</p>
+          <ul className="list-disc list-inside mt-2 text-gray-700">
+            <li>Build development of microservices using .NET 6 and AWS.</li>
+            <li>Built scalable React/Next.js front-end for client portal.</li>
           </ul>
         </div>
 
-        <div className="w-48 h-48 md:w-72 md:h-72 bg-gradient-to-tr from-sky-400 to-indigo-600 rounded-2xl flex items-end justify-center p-4 text-white shadow-lg bg-cover bg-center"
-        style={{ backgroundImage: "url('monisha.jpg')" }}
-        >
-          <div className="text-center">
-            <p className="font-semibold">Monisha Kesavan</p>
-            <p className="text-xs opacity-90">Software Engineer</p>
-          </div>
+        <div className="p-6 bg-white shadow rounded-lg">
+          <h3 className="text-xl font-semibold">Senior Software Developer – Hexagon R&D India</h3>
+          <p className="text-gray-600">Sep 2017 – Aug 2022</p>
+          <ul className="list-disc list-inside mt-2 text-gray-700">
+            <li>Developed REST APIs using ASP.NET Core and Entity Framework.</li>
+            <li>Worked CI/CD pipelines on Azure DevOps.</li>
+            <li>Worked closely with UI/UX designers to deliver responsive layouts.</li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="about" className="max-w-5xl mx-auto px-6 py-10">
-        <div className="bg-white rounded-lg p-6 shadow">
-          <h3 className="text-2xl font-semibold">About Me</h3>
-          <p className="mt-3 text-gray-600">I have X+ years building backend services and web applications with .NET and modern frontends with React. I enjoy designing robust data models with EF Core, optimizing backend performance, and partnering with product/design to deliver polished UI. I have experience operating apps in AWS, using RDS for relational data, S3 for assets, and automating deployments via GitHub Actions / Amplify.</p>
+    <section id="contact" className="max-w-5xl mx-auto px-6 py-10">
+      <h3 className="text-2xl font-semibold mb-4">Contact</h3>
+      <div className="bg-white rounded-lg p-6 shadow">
+        <p className="text-gray-700">Email: <a href="monishadevk.com" className="text-sky-600">monishadevk@gmail.com</a></p>
+        <p className="text-gray-700 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/monisha-kesavan-910353216/" target="_blank" rel="noreferrer" className="text-sky-600">monishaLinkedin</a></p>
+        <p className="text-gray-700 mt-2">GitHub: <a href="https://github.com/MONISHAK7" target="_blank" rel="noreferrer" className="text-sky-600">monishaGithub</a></p>
 
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <h4 className="text-sm font-semibold">Strengths</h4>
-              <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
-                <li>System design & architecture for scalable web apps</li>
-                <li>High-quality, testable C# code & clean APIs</li>
-                <li>UX-minded frontend development in React/Next.js</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold">Open to</h4>
-              <ul className="mt-2 text-sm text-gray-700 list-disc list-inside">
-                <li>Senior/.NET engineering roles (full-stack or backend)</li>
-                <li>Technical leadership & system design interviews</li>
-                <li>Remote or Melbourne-based opportunities</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+        <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="name" placeholder="Your name" className="p-3 border rounded" />
+          <input name="email" placeholder="Your email" className="p-3 border rounded" />
+          <textarea name="message" placeholder="Message" className="md:col-span-2 p-3 border rounded h-28" />
+          <button type="submit" className="md:col-span-2 bg-sky-600 text-white px-4 py-3 rounded">
+            Send Message
+          </button>
 
-      <section id="projects" className="max-w-5xl mx-auto px-6 py-10">
-        <h3 className="text-2xl font-semibold mb-6">Projects</h3>
-        <div className="grid gap-6">
-          {projects.map((p) => (
-            <article key={p.title} className="bg-white rounded-lg p-5 shadow flex flex-col md:flex-row gap-4 items-start">
-              <img src={p.img} alt={p.title} className="w-full md:w-56 h-40 object-cover rounded-lg bg-gray-100" />
-              <div className="flex-1">
-                <h4 className="text-lg font-semibold">{p.title}</h4>
-                <p className="mt-2 text-gray-600">{p.desc}</p>
-                <p className="mt-3 text-sm text-gray-700">Tech: {p.tech.join(' • ')}</p>
+          {formStatus && (
+            <p className="md:col-span-2 text-sm mt-2">{formStatus}</p>
+          )}
+        </form>
+      </div>
+    </section>
 
-                <div className="mt-4 flex items-center gap-3">
-                  <a href={p.github} target="_blank" rel="noreferrer" className="text-sm inline-block border px-3 py-2 rounded hover:bg-gray-50">View Code</a>
-                  {p.demo && <a href={p.demo} target="_blank" rel="noreferrer" className="text-sm inline-block bg-sky-50 text-sky-600 px-3 py-2 rounded">Live Demo</a>}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="resume" className="max-w-5xl mx-auto px-6 py-10">
-        <div className="bg-white rounded-lg p-6 shadow flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">Resume</h3>
-            <p className="text-gray-600 mt-1">Download a printer-friendly PDF of my resume.</p>
-          </div>
-          <a href="/resume.pdf" download className="bg-sky-600 text-white px-5 py-3 rounded-lg shadow hover:shadow-lg">Download Resume</a>
-        </div>
-      </section>
-
-      <section id="contact" className="max-w-5xl mx-auto px-6 py-10">
-        <h3 className="text-2xl font-semibold mb-4">Contact</h3>
-        <div className="bg-white rounded-lg p-6 shadow">
-          <p className="text-gray-700">Email: <a href="mailto:youremail@example.com" className="text-sky-600">youremail@example.com</a></p>
-          <p className="text-gray-700 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="text-sky-600">linkedin.com/in/yourprofile</a></p>
-          <p className="text-gray-700 mt-2">GitHub: <a href="https://github.com/MONISHAK7" target="_blank" rel="noreferrer" className="text-sky-600">github.com/yourusername</a></p>
-
-          <form action="/api/contact" method="post" className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input name="name" placeholder="Your name" className="p-3 border rounded" />
-            <input name="email" placeholder="Your email" className="p-3 border rounded" />
-            <textarea name="message" placeholder="Message" className="md:col-span-2 p-3 border rounded h-28" />
-            <button type="submit" className="md:col-span-2 bg-sky-600 text-white px-4 py-3 rounded">Send Message</button>
-          </form>
-        </div>
-      </section>
-
-      <footer className="mt-12 py-6 border-t bg-white">
-        <div className="max-w-5xl mx-auto px-6 text-sm text-gray-600">© {new Date().getFullYear()} Monisha Kesavan — Built with .NET, React, Next.js and AWS</div>
-      </footer>
-    </main>
-  );
+    <footer className="mt-12 py-6 border-t bg-white">
+      <div className="max-w-5xl mx-auto px-6 text-sm text-gray-600">© {new Date().getFullYear()} Monisha Kesavan — Built with .NET, React, Next.js and Vercel</div>
+    </footer>
+  </main>
+);
 }
