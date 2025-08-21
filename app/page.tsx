@@ -17,7 +17,7 @@ export default function Portfolio() {
       desc: 'A property flip & listing platform built with .NET 8 (API), EF Core, AWS RDS, and React/Next.js frontend. Features: property CRUD, image uploads, filters, and auth.',
       tech: ['.NET 8', 'EF Core', 'React', 'Next.js', 'AWS (RDS, S3)'],
       github: 'https://github.com/MONISHAK7/Skymod.API',
-      demo: '#',
+      demo: 'https://skymodapi.vercel.app/',
       img: 'skymod.png'
     },
     {
@@ -25,7 +25,7 @@ export default function Portfolio() {
       desc: 'A modern, responsive personal portfolio website built with Next.js and Tailwind CSS to showcase projects, skills, and experience. Features smooth animations, optimized images, and mobile-first design. Deployed on Vercel for fast global delivery.',
       tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
       github: 'https://github.com/MONISHAK7/Personal-Portfolio',
-      demo: 'https://personal-portfolio-moeqqr4y6-monisha-kesavans-projects.vercel.app/',
+      demo: 'https://monisha-kesavanc.vercel.app/',
       img: 'personal.png'
     }
   ];
