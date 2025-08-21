@@ -173,7 +173,7 @@ return (
       <h3 className="text-2xl font-semibold mb-6">Work Experience</h3>
       <div className="space-y-6">
         <div className="p-6 bg-white shadow rounded-lg">
-          <h3 className="text-xl font-semibold">Software Engineer – Slalom</h3>
+          <h3 className="text-xl font-semibold">Software Engineer – Slalom Australia</h3>
           <p className="text-gray-600">Sep 2022 – March 2025</p>
           <ul className="list-disc list-inside mt-2 text-gray-700">
             <li>Build development of microservices using .NET 6 and AWS.</li>
